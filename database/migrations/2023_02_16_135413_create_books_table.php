@@ -17,6 +17,10 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('page_count');
             $table->timestamps();
+
+            $table->unsignedBigInteger('author_id');
+            $table->index('author_id', 'book_author_idx');
+            $table->foreign('author_id', 'book_author_fk')->on('authors')->references('id');
         });
     }
 
